@@ -6,14 +6,30 @@
     font-family: 'Avenir';
   }
 
-.p-5 .px-5 h3 {
-  color: #BD0707
-}
-
-#merah {
-  color: #BD0707
+#placeholdertext::-webkit-input-placeholder{
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    opacity: 0.7;
 }
 
 .text-red {
   color: #BD0707
+}
+
+.border-red {
+  border-color: #BD0707 ;
+  border-width: 2px;
+}
+
+.bg-red {
+  background-color: #BD0707;
+}
+
+.inputbg-red {
+  background-color: rgb(128,0,0,0.05);
+}
+
+.scroll {
+  max-height:220px;
+  overflow-y: auto;
 }
