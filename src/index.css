@@ -1,13 +1,19 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+    font-family: 'Avenir';
+    src: url("/src/assets/avenir_ff/AvenirLTStd-Black.otf")
+  }
+  *{
+    font-family: 'Avenir';
+  }
+
+.p-5 .px-5 h3 {
+  color: #BD0707
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#merah {
+  color: #BD0707
+}
+
+.text-red {
+  color: #BD0707
 }
