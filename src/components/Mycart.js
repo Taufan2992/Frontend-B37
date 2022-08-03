@@ -132,8 +132,12 @@ function Mycart() {
 
             <hr />
 
-            <div className="row">
-              <div className="col-8 text-red">
+
+          </div>
+
+          <div className=" col-4 px-5">
+
+              <div className="text-red">
                 <hr />
 
                 <div className="d-flex justify-content-between">
@@ -154,51 +158,9 @@ function Mycart() {
                 </div>
               </div>
 
-              <div className=" col-4">
-                <label for="upload" style={{ float: "right" }} className="mt-4">
-                  <input type="file" id="upload" hidden />
-                  <img src={upload} style={{ float: "right" }}/>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div className=" col-4 px-5">
-            <div className="mb-3">
-              <input
-                type="email"
-                className="form-control mb-3 mt-3 border-red border-3 inputbg-red"
-                id="placeholdertext"
-                placeholder="Name"
-              />
-              <input
-                type="email"
-                className="form-control mb-3 border-red border-3 inputbg-red"
-                id="placeholdertext"
-                placeholder="Email"
-              />
-              <input
-                type="email"
-                className="form-control mb-3 border-red border-3 inputbg-red"
-                id="placeholdertext"
-                placeholder="Phone"
-              />
-              <input
-                type="email"
-                className="form-control mb-3 border-red border-3 inputbg-red"
-                id="placeholdertext"
-                placeholder="Pos Code"
-              />
-
-              <textarea
-                className="form-control mb-5 border-red border-3 inputbg-red"
-                id="placeholdertext"
-                rows="4"
-                placeholder="Address"
-              ></textarea>
-
+            <div className="mt-4">
               <button 
-              className="container btn btn-primary bg-red border-0" 
+              className="container btn btn-primary bg-red border-0 mt-2" 
               type="button">
                 Pay
               </button>
