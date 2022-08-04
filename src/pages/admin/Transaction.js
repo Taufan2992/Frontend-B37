@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Navbaruser from "../assets/Navbaruser";
-import Transactiondata from "../assets/Datadummy/Transactiondata"
+import Navbaradmin from "../../components/partial/Navbaradmin";
+import Transactiondata from "../../assets/Datadummy/Transactiondata"
+
 
 function Transaction() {
 
@@ -11,7 +12,7 @@ function Transaction() {
   return (
     <div>
 
-      <Navbaruser/>
+      <Navbaradmin/>
 
       <div class="container my-5 text-red">
         <h3>Income Transaction</h3>
@@ -27,7 +28,6 @@ function Transaction() {
                 <th scope="col" class="bg-secondary bg-opacity-10">Post Code</th>
                 <th scope="col" class="bg-secondary bg-opacity-10">Income</th>
                 <th scope="col" class="bg-secondary bg-opacity-10">Status</th>
-                <th scope="col" class="bg-secondary bg-opacity-10 text-center">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -39,7 +39,6 @@ function Transaction() {
                 <td>{data.postcode}</td>
                 <td class="text-primary">{data.income}</td>
                 <td className= {`status-transaction-${data.status}`} >{data.status}</td>
-                <td class="text-center">{data.action}</td>
             </tr>
             ))}
             </tbody>

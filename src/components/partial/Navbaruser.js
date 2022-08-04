@@ -1,10 +1,9 @@
 import React from "react";
-import logo from "./image/Header.png";
-import blank from "./image/blank-profile.png";
-import cart from "./image/keranjang.png"
-import profile from "./image/user.png"
-import logout from "./image/logout.png"
-
+import logo from "../../assets/image/Header.png";
+import blank from "../../assets/image/blank-profile.png";
+import cart from "../../assets/image/keranjang.png";
+import profile from "../../assets/image/user.png";
+import logout from "../../assets/image/logout.png";
 
 function Navbaruser() {
   return (
@@ -18,8 +17,18 @@ function Navbaruser() {
 
             <div class="d-flex align-items-center">
               <div class="justify-content-end d-flex me-2">
-                <a href="#" style={{ textDecoration: "none"}}>
-                <img src={cart} alt="" className="me-3" height="30px" width="30px"/>
+                <a href="#" style={{ textDecoration: "none", position:"relative"}}>
+                  <img
+                    src={cart}
+                    alt=""
+                    className="me-3 mt-2 my-auto position-relative"
+                    height="30px"
+                    width="30px"
+                  />
+                  <span class="badge rounded-pill bg-danger" style={{position:"absolute", top:"0", right:"0px"}}>
+                    10
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
                 </a>
               </div>
 
@@ -48,11 +57,13 @@ function Navbaruser() {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="#">
-                        <img src={profile} alt="" height="20px" width="20px" /> Profile
+                        <img src={profile} alt="" height="20px" width="20px" />{" "}
+                        Profile
                       </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">
-                        <img src={logout} alt="" height="20px" width="20px"/> Log out
+                        <img src={logout} alt="" height="20px" width="20px" />{" "}
+                        Log out
                       </a>
                     </div>
                   </li>

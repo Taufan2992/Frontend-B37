@@ -1,9 +1,9 @@
 import React from "react";
-import logo from "./image/Header.png";
-import blank from "./image/blank-profile.png";
-import cup from "./image/cup.png"
-import topping from "./image/topping.png"
-import logout from "./image/logout.png"
+import logo from "../../assets/image/Header.png";
+import blank from "../../assets/image/blank-profile.png";
+import cup from "../../assets/image/cup.png"
+import topping from "../../assets/image/topping.png"
+import logout from "../../assets/image/logout.png"
 
 
 function Navbaradmin() {

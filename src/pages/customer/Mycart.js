@@ -1,9 +1,15 @@
-import React from "react";
-import bin from "../assets/image/bin.png";
-import upload from "../assets/image/upload.png"
-import Navbaruser from "../assets/Navbaruser";
+import React, { useState } from "react";
+import bin from "../../assets/image/bin.png";
+import Navbaruser from "../../components/partial/Navbaruser";
+import {Button, Modal, ModalBody} from 'react-bootstrap'
 
 function Mycart() {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
 
@@ -70,7 +76,12 @@ function Mycart() {
                         Rp. 15.000
                       </p>
 
-                      <img src={bin} alt="" style={{ float: "right" }} />
+                      <img 
+                      src={bin} 
+                      alt="" 
+                      style={{ float: "right", cursor:"pointer" }}
+                      onClick={handleShow} 
+                      />
                     </div>
                   </div>
                 </div>
@@ -168,6 +179,37 @@ function Mycart() {
           </div>
         </div>
       </div>
+
+
+
+      <Modal show={show} onHide={handleClose}>
+        <ModalBody style={{padding:'4.5rem 1.5rem'}}>
+          <h3 style={{marginTop:'-2.9rem'}}>Delete Data</h3>
+            <p
+              style={{fontFamily:'Roboto',
+                fontSize:'21px',
+                  display:'block'}}>
+                    Are you sure want to delete this data?</p>
+
+        <div className="row col-4 ms-5">
+            <Button variant="success" 
+              style={{width:'7rem',
+                marginRight:'3.2rem',
+                  marginLeft:'9.4rem',
+                    marginTop:'1rem',
+                      position:'absolute'}} onClick={handleClose}>Yes</Button>
+
+            <Button variant="danger"
+              style={{width:'7rem',
+                marginLeft:'18.2rem',
+                  marginTop:'1rem',
+                    position:'absolute'}} onClick={handleClose}>No
+            </Button>
+        </div>
+        </ModalBody>
+    </Modal>
+
+
     </div>
   );
 }
