@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import bin from "../../assets/image/bin.png";
 import Navbaruser from "../../components/partial/Navbaruser";
-import {Button, Modal, ModalBody} from 'react-bootstrap'
+import { Button, Modal, ModalBody } from "react-bootstrap";
 
 function Mycart() {
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -12,15 +11,18 @@ function Mycart() {
 
   return (
     <div>
+      <Navbaruser />
 
-    <Navbaruser/>
+      <div class="alert alert-light" style={{color:"#469F74", fontWeight:"0"}} role="alert">
+        Thank you for ordering in us, please wait to verify your order
+      </div>
 
       <div className="p-5 mx-5">
         <div className="px-5 mb-3 text-red">
           <h3>My Cart</h3>
         </div>
         <div className="px-5">
-          <p  className="mb-0 text-red">Review your order</p>
+          <p className="mb-0 text-red">Review your order</p>
         </div>
 
         <div className="row">
@@ -51,12 +53,17 @@ function Mycart() {
 
                       <p
                         className="card-text"
-                        style={{ fontSize: "16px", fontWeight: "800", color:"#974A4A" }}
+                        style={{
+                          fontSize: "16px",
+                          fontWeight: "800",
+                          color: "#974A4A",
+                        }}
                       >
                         Topping :
-                        <span 
-                        className="text-red ms-1"
-                        style={{fontSize:"14px", fontWeight: "100"}}>
+                        <span
+                          className="text-red ms-1"
+                          style={{ fontSize: "14px", fontWeight: "100" }}
+                        >
                           Bill Berry Boba
                         </span>
                       </p>
@@ -76,11 +83,11 @@ function Mycart() {
                         Rp. 15.000
                       </p>
 
-                      <img 
-                      src={bin} 
-                      alt="" 
-                      style={{ float: "right", cursor:"pointer" }}
-                      onClick={handleShow} 
+                      <img
+                        src={bin}
+                        alt=""
+                        style={{ float: "right", cursor: "pointer" }}
+                        onClick={handleShow}
                       />
                     </div>
                   </div>
@@ -109,12 +116,17 @@ function Mycart() {
 
                       <p
                         className="card-text"
-                        style={{ fontSize: "16px", fontWeight: "800", color:"#974A4A" }}
+                        style={{
+                          fontSize: "16px",
+                          fontWeight: "800",
+                          color: "#974A4A",
+                        }}
                       >
                         Topping :
-                        <span 
-                        className="text-red ms-1"
-                        style={{fontSize:"14px", fontWeight: "100"}}>
+                        <span
+                          className="text-red ms-1"
+                          style={{ fontSize: "14px", fontWeight: "100" }}
+                        >
                           Bill Berry Boba
                         </span>
                       </p>
@@ -142,37 +154,35 @@ function Mycart() {
             </div>
 
             <hr />
-
-
           </div>
 
           <div className=" col-4 px-5">
+            <div className="text-red">
+              <hr />
 
-              <div className="text-red">
-                <hr />
-
-                <div className="d-flex justify-content-between">
-                  <p className="d-flex">Subtotal</p>
-                  <p className="d-flex">1000</p>
-                </div>
-
-                <div className="d-flex justify-content-between">
-                  <p className="d-flex">Qty</p>
-                  <p className="d-flex">1</p>
-                </div>
-
-                <hr />
-
-                <div className="d-flex justify-content-between">
-                  <p className="d-flex">Total</p>
-                  <p className="d-flex">1000</p>
-                </div>
+              <div className="d-flex justify-content-between">
+                <p className="d-flex">Subtotal</p>
+                <p className="d-flex">1000</p>
               </div>
 
+              <div className="d-flex justify-content-between">
+                <p className="d-flex">Qty</p>
+                <p className="d-flex">1</p>
+              </div>
+
+              <hr />
+
+              <div className="d-flex justify-content-between">
+                <p className="d-flex">Total</p>
+                <p className="d-flex">1000</p>
+              </div>
+            </div>
+
             <div className="mt-4">
-              <button 
-              className="container btn btn-primary bg-red border-0 mt-2" 
-              type="button">
+              <button
+                className="container btn btn-primary bg-red border-0 mt-2"
+                type="button"
+              >
                 Pay
               </button>
             </div>
@@ -180,36 +190,45 @@ function Mycart() {
         </div>
       </div>
 
-
-
       <Modal show={show} onHide={handleClose}>
-        <ModalBody style={{padding:'4.5rem 1.5rem'}}>
-          <h3 style={{marginTop:'-2.9rem'}}>Delete Data</h3>
-            <p
-              style={{fontFamily:'Roboto',
-                fontSize:'21px',
-                  display:'block'}}>
-                    Are you sure want to delete this data?</p>
+        <ModalBody style={{ padding: "4.5rem 1.5rem" }}>
+          <h3 style={{ marginTop: "-2.9rem" }}>Delete Data</h3>
+          <p
+            style={{ fontFamily: "Roboto", fontSize: "21px", display: "block" }}
+          >
+            Are you sure want to delete this data?
+          </p>
 
-        <div className="row col-4 ms-5">
-            <Button variant="success" 
-              style={{width:'7rem',
-                marginRight:'3.2rem',
-                  marginLeft:'9.4rem',
-                    marginTop:'1rem',
-                      position:'absolute'}} onClick={handleClose}>Yes</Button>
-
-            <Button variant="danger"
-              style={{width:'7rem',
-                marginLeft:'18.2rem',
-                  marginTop:'1rem',
-                    position:'absolute'}} onClick={handleClose}>No
+          <div className="row col-4 ms-5">
+            <Button
+              variant="success"
+              style={{
+                width: "7rem",
+                marginRight: "3.2rem",
+                marginLeft: "9.4rem",
+                marginTop: "1rem",
+                position: "absolute",
+              }}
+              onClick={handleClose}
+            >
+              Yes
             </Button>
-        </div>
+
+            <Button
+              variant="danger"
+              style={{
+                width: "7rem",
+                marginLeft: "18.2rem",
+                marginTop: "1rem",
+                position: "absolute",
+              }}
+              onClick={handleClose}
+            >
+              No
+            </Button>
+          </div>
         </ModalBody>
-    </Modal>
-
-
+      </Modal>
     </div>
   );
 }

@@ -26,7 +26,7 @@ function Navbaruser() {
                     width="30px"
                   />
                   <span class="badge rounded-pill bg-danger" style={{position:"absolute", top:"0", right:"0px"}}>
-                    10
+                    0
                     <span class="visually-hidden">unread messages</span>
                   </span>
                 </a>
