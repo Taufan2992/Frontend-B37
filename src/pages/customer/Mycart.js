@@ -13,8 +13,8 @@ function Mycart() {
 
   const [cartData] = useState(DummyLagi)
   const [deleteDummyData, setDeleteDummyData] = useState(cartData)
-  const [plusNumberOne, setPlusNumberOne] = useState(0)
   const [message, setMessage] = useState(null)
+  const [cartCounter, setCartCounter] = useState(0)
 
   let subTotal = 0;
   cartData.forEach((item) => {
