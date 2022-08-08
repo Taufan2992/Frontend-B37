@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useContext} from "react";
+import { UserContext } from "../../context/user-context";
+import { useNavigate } from "react-router-dom";
+
 import logo from "../../assets/image/Header.png";
 import blank from "../../assets/image/blank-profile.png";
 import cup from "../../assets/image/cup.png"
@@ -7,25 +10,48 @@ import logout from "../../assets/image/logout.png"
 
 
 function Navbaradmin() {
+
+  const [state, dispatch] = useContext(UserContext)
+  const moving = useNavigate()
+  
+  const moveToLogout = () => {
+    dispatch({
+        type:"LOGOUT"
+    })
+    moving("/Auth")
+}
+
+const moveToTransaction = () => {
+  moving('/transaction')
+}
+
+const moveToProduct = () => {
+  moving('/add-drink')
+}
+
+const moveToToping = () => {
+moving('/add-toping')
+}
+
   return (
     <div>
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+      <div className="container">
+        <nav className="navbar navbar-expand-lg navbar-light bg-white">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#" onClick={moveToTransaction}>
               <img src={logo} width="75" height="75" alt="" />
             </a>
 
-            <div class="d-flex align-items-center">
+            <div className="d-flex align-items-center">
 
               <div
-                class="justify-content-end d-flex"
+                className="justify-content-end d-flex"
                 id="navbarSupportedContent"
               >
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item dropdown">
+                <ul className="navbar-nav mr-auto">
+                  <li className="nav-item dropdown">
                     <a
-                      class="nav-link dropdown"
+                      className="nav-link dropdown"
                       href="#"
                       id="navbarDropdown"
                       role="button"
@@ -34,22 +60,22 @@ function Navbaradmin() {
                       aria-expanded="false"
                     >
                       <img
-                        class="rounded-circle border border-danger border-2"
+                        className="rounded-circle border border-danger border-2"
                         src={blank}
                         width="50"
                         height="50"
                         alt=""
                       />
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a className="dropdown-item" href="#" onClick={moveToProduct}>
                         <img src={cup} alt="" height="20px" width="16px" /> Add Product
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#" onClick={moveToToping}>
                         <img src={topping} alt="" height="20px" width="16px" /> Add Topping
                       </a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">
+                      <div className="dropdown-divider"></div>
+                      <a className="dropdown-item" href="#" onClick={moveToLogout}>
                         <img src={logout} alt="" height="20px" width="20px" /> Log out
                       </a>
                     </div>

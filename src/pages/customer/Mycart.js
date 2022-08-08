@@ -1,20 +1,51 @@
 import React, { useState } from "react";
-import bin from "../../assets/image/bin.png";
+import Bin from "../../assets/image/bin.png";
 import Navbaruser from "../../components/partial/Navbaruser";
-import { Button, Modal, ModalBody } from "react-bootstrap";
+import Rp from "rupiah-format"
+import DummyLagi from "../../DummyData/My-Cart"
+import { Alert , Form } from "react-bootstrap"
+import "../../assets/css/Cart.css"
 
 function Mycart() {
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const title = "My Cart"
+  document.title = title
+
+  const [cartData] = useState(DummyLagi)
+  const [deleteDummyData, setDeleteDummyData] = useState(cartData)
+  const [plusNumberOne, setPlusNumberOne] = useState(0)
+  const [message, setMessage] = useState(null)
+
+  let subTotal = 0;
+  cartData.forEach((item) => {
+    return subTotal += item?.price
+  })
+
+  let handleOnDelete = (id) => {
+    let data = cartData
+    const datas = data.splice(id - 1 , 1)
+    console.log(datas);
+    setDeleteDummyData(datas)
+  }
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault()
+
+    const alert = (
+      <Alert id="alert-message-payment" variant="success" className='py-3'>
+        Thank you for ordering in us, please wait to verify you order
+      </Alert>
+    )
+    setMessage(alert)
+  } 
+
+  const addCart = localStorage.getItem("Tambah")
 
   return (
     <div>
-      <Navbaruser />
-
-      <div class="alert alert-light" style={{color:"#469F74", fontWeight:"0"}} role="alert">
-        Thank you for ordering in us, please wait to verify your order
+      <div className="container">
+        <Navbaruser className="ms-4 for-nav" plusOne={addCart}/>
+        {message}
       </div>
 
       <div className="p-5 mx-5">
@@ -30,127 +61,62 @@ function Mycart() {
             <hr />
 
             <div className="card mb-3 scroll" style={{ border: "none" }}>
-              <div className="row g-0 mb-2">
-                <div className="col-md-2">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
-                    alt="Trendy Pants and Shoes"
-                    className="rounded"
-                    height={"100px"}
-                    width={"100px"}
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <div className="col-md-10 row">
-                  <div className="col-md-9">
-                    <div className="card-body px-0">
-                      <p
-                        className="card-title text-red"
-                        style={{ fontSize: "18px", fontWeight: "900" }}
-                      >
-                        Title
-                      </p>
-
-                      <p
-                        className="card-text"
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: "800",
-                          color: "#974A4A",
-                        }}
-                      >
-                        Topping :
-                        <span
-                          className="text-red ms-1"
-                          style={{ fontSize: "14px", fontWeight: "100" }}
+              {cartData.map((item, index) => (
+                <div key={index} className="row g-0 mb-2">
+                  <div className="col-md-2">
+                    <img
+                      src={item?.img}
+                      alt={item?.img}
+                      className="rounded"
+                      height={"100px"}
+                      width={"100px"}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <div className="col-md-10 row">
+                    <div className="col-md-9">
+                      <div className="card-body px-0">
+                        <p
+                          className="card-title text-red"
+                          style={{ fontSize: "18px", fontWeight: "900" }}
                         >
-                          Bill Berry Boba
-                        </span>
-                      </p>
-                    </div>
-                  </div>
+                          {item?.title}
+                        </p>
 
-                  <div className="col-md-3">
-                    <div className="card-body px-0">
-                      <p
-                        className="card-title text-red"
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: "400",
-                          textAlign: "right",
-                        }}
-                      >
-                        Rp. 15.000
-                      </p>
-
-                      <img
-                        src={bin}
-                        alt=""
-                        style={{ float: "right", cursor: "pointer" }}
-                        onClick={handleShow}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="row g-0">
-                <div className="col-md-2">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
-                    alt="Trendy Pants and Shoes"
-                    className="rounded"
-                    height={"100px"}
-                    width={"100px"}
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <div className="col-md-10 row">
-                  <div className="col-md-9">
-                    <div className="card-body px-0">
-                      <p
-                        className="card-title text-red"
-                        style={{ fontSize: "18px", fontWeight: "900" }}
-                      >
-                        Title
-                      </p>
-
-                      <p
-                        className="card-text"
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: "800",
-                          color: "#974A4A",
-                        }}
-                      >
-                        Topping :
-                        <span
-                          className="text-red ms-1"
-                          style={{ fontSize: "14px", fontWeight: "100" }}
+                        <p
+                          className="card-text"
+                          style={{ fontSize: "16px", fontWeight: "800", color:"#974A4A" }}
                         >
-                          Bill Berry Boba
-                        </span>
-                      </p>
+                          Toping
+                          <span 
+                          className="text-red ms-1"
+                          style={{fontSize:"14px", fontWeight: "100"}}>
+                            : {item?.toping}
+                          </span>
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="col-md-3">
-                    <div className="card-body px-0">
-                      <p
-                        className="card-title text-red"
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: "400",
-                          textAlign: "right",
-                        }}
-                      >
-                        Rp. 15.000
-                      </p>
+                    <div className="col-md-3">
+                      <div className="card-body px-0">
+                        <p
+                          className="card-title text-red"
+                          style={{
+                            fontSize: "16px",
+                            fontWeight: "400",
+                            textAlign: "right",
+                          }}
+                        >
+                          {Rp.convert(item.price)}
+                        </p>
 
-                      <img src={bin} alt="" style={{ float: "right" }} />
+                        <img src={Bin} style={{ float: "right" , cursor:'pointer'}}
+                           onClick={handleOnDelete}/>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
 
             <hr />
@@ -162,73 +128,35 @@ function Mycart() {
 
               <div className="d-flex justify-content-between">
                 <p className="d-flex">Subtotal</p>
-                <p className="d-flex">1000</p>
+                <p className="d-flex">{Rp.convert(subTotal)}</p>
               </div>
 
               <div className="d-flex justify-content-between">
                 <p className="d-flex">Qty</p>
-                <p className="d-flex">1</p>
+                <p className="d-flex">{cartData?.length}</p>
               </div>
 
               <hr />
 
               <div className="d-flex justify-content-between">
                 <p className="d-flex">Total</p>
-                <p className="d-flex">1000</p>
+                <p className="d-flex">{Rp.convert(subTotal)}</p>
               </div>
             </div>
 
             <div className="mt-4">
-              <button
-                className="container btn btn-primary bg-red border-0 mt-2"
-                type="button"
-              >
-                Pay
-              </button>
+              <Form className="d-flex" onSubmit={handleOnSubmit}>
+                <button 
+                className="container btn btn-primary bg-red border-0 mt-2" 
+                type="submit">
+                  Pay
+                </button>
+              </Form>
             </div>
           </div>
         </div>
       </div>
 
-      <Modal show={show} onHide={handleClose}>
-        <ModalBody style={{ padding: "4.5rem 1.5rem" }}>
-          <h3 style={{ marginTop: "-2.9rem" }}>Delete Data</h3>
-          <p
-            style={{ fontFamily: "Roboto", fontSize: "21px", display: "block" }}
-          >
-            Are you sure want to delete this data?
-          </p>
-
-          <div className="row col-4 ms-5">
-            <Button
-              variant="success"
-              style={{
-                width: "7rem",
-                marginRight: "3.2rem",
-                marginLeft: "9.4rem",
-                marginTop: "1rem",
-                position: "absolute",
-              }}
-              onClick={handleClose}
-            >
-              Yes
-            </Button>
-
-            <Button
-              variant="danger"
-              style={{
-                width: "7rem",
-                marginLeft: "18.2rem",
-                marginTop: "1rem",
-                position: "absolute",
-              }}
-              onClick={handleClose}
-            >
-              No
-            </Button>
-          </div>
-        </ModalBody>
-      </Modal>
     </div>
   );
 }

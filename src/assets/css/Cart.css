@@ -1,0 +1,17 @@
+.scroll {
+    max-height:220px;
+    overflow-y: auto;
+}
+.bg-red {
+    background-color: #BD0707;
+}
+.bg-red:hover {
+    background-color: #910909 !important
+}
+
+#alert-message-payment{
+    text-align: center;
+    color: #469F74;
+    font-size: 24px;
+    font-weight: 100;
+}
